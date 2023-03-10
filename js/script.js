@@ -83,3 +83,82 @@ console.log(product);
 //var num = 10;
 
 //console.log(num);
+
+
+// SORTING 
+
+// var nums = [10, 3, 100, 500, 50, 75, 45];
+
+// nums.sort(function (current, next) {
+//     return current - next;
+// });
+
+// console.log(nums.length);
+
+// for (var i = 0; i < nums.length; i++) {
+//     if (num[i] === 5000) {
+//         break;
+//     }
+
+//     console.log(nums[i]);
+
+// }
+
+
+// Alternative to for loop when you need to call all items in an array
+// nums.forEach(function (item, index) {
+//     console.log(item, index);
+// });
+
+// A method is a function that is assigned to a property of an object.
+
+var data = {
+    name: 'Eric',
+    sport: 'volleyball',
+    pets: 1,
+    kids: 2,
+    hobby: 'guitar',
+    printName: function() {
+        console.log(this.name); // 'this' is equivalent to saying 'this parent object'
+    }
+};
+
+data.printName();
+
+
+var lowercase = ['a', 'b', 'c', 'd', 'e'];
+var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function getRandom(charSet) {
+    return charSet[Math.floor(Math.random() * charSet.length)];
+}
+
+function genPass(data) {
+    var result = '';
+    var chars = [];
+
+    if (data.lowercase) {
+        chars.concat(lowercase);
+    }
+
+    if (data.nums) {
+        chars.concat(nums);
+    }
+
+    for (var i = 0; i < data.passwordLength; i++) {
+        result += getRandom(chars);
+    }
+
+    return result;
+}
+
+var options = {
+    passwordLength: 35
+};
+
+
+// var random = Math.floor(Math.random() * 10) + 1;
+
+var pass = genPass(options);
+
+console.log(pass);

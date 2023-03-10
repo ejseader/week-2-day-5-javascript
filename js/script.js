@@ -138,12 +138,16 @@ function genPass(data) {
     var chars = [];
 
     if (data.lowercase) {
-        chars.concat(lowercase);
+        chars = chars.concat(lowercase);
     }
 
     if (data.nums) {
-        chars.concat(nums);
+        chars = chars.concat(nums);
     }
+
+    chars.sort(function(a, b) {
+        return 0.5 - Math.random();
+    })
 
     for (var i = 0; i < data.passwordLength; i++) {
         result += getRandom(chars);
@@ -153,7 +157,9 @@ function genPass(data) {
 }
 
 var options = {
-    passwordLength: 35
+    passwordLength: 35,
+    lowercase: true,
+    nums: true
 };
 
 
@@ -162,3 +168,22 @@ var options = {
 var pass = genPass(options);
 
 console.log(pass);
+
+
+var uppercase = [];
+var nums = [];
+
+for (var l = 65; l < 91; l++) {
+  uppercase.push(String.fromCharCode(l))
+}
+
+var lowercase = uppercase.map(function (letter) {
+  return letter.toLowerCase();
+});
+
+for (var n = 0; n < 10; n++) {
+  nums.push(n);
+}
+
+
+console.log(uppercase, lowercase, nums);
